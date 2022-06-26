@@ -9,10 +9,6 @@ import ConnectedPage from '../src/connected';
 function Home() {
   const { isConnected } = useConnect();
 
-  React.useEffect(() => {
-    console.log('Connected: ', isConnected);
-  }, [isConnected]);
-
   return (
     isConnected ? <ConnectedPage /> : <NotConnectedPage />
   );
