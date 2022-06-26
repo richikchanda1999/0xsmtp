@@ -34,24 +34,10 @@ const { chains, provider } = configureChains(allChains, [
 const client = createClient({
   autoConnect: true,
   connectors: [
-    new InjectedConnector({
-      chains,
-      options: {
-        name: 'Injected',
-        shimDisconnect: true,
-      },
-    }),
     new MetaMaskConnector({
       chains,
       options: {
         shimDisconnect: true,
-      },
-    }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        infuraId,
-        qrcode: true,
       },
     }),
   ],

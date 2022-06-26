@@ -4,6 +4,10 @@ env:
 extends:
   - plugin:react/recommended
   - airbnb
+  - next/core-web-vitals
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:import/typescript
 parser: '@typescript-eslint/parser'
 parserOptions:
   ecmaFeatures:
@@ -31,4 +35,6 @@ rules:
     - extensions:
       - .tsx
       - .ts
+  import/extensions:
+    - off
 
