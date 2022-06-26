@@ -1,9 +1,6 @@
-import {
-  Flex,
-} from '@chakra-ui/react';
 import React from 'react';
+import { useConnect } from 'wagmi';
 import NotConnectedPage from '../src/not_connected';
-import { useConnect, useSignMessage } from 'wagmi';
 import ConnectedPage from '../src/connected';
 
 function Home() {
