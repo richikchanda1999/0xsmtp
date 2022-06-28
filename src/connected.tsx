@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import { Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import React from "react";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
@@ -8,6 +8,8 @@ function ConnectedPage() {
 
   const [toAddress, setToAddress] = React.useState("");
   const { signMessageAsync } = useSignMessage();
+
+  const toast = useToast()
 
   const onClick = async () => {
     console.log(accountData?.address, toAddress);
@@ -33,9 +35,20 @@ function ConnectedPage() {
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      toast({
+        title: "Success",
+        description: "Mapping done!",
+        status: "success",
+      });
+      setToAddress('')
     })
     .catch((error) => {
       console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: "Some error occurred!",
+        status: "error",
+      });
     });
   }
   return (
