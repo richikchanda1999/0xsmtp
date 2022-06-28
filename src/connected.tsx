@@ -16,14 +16,28 @@ function ConnectedPage() {
 
     const signedMessage = await signMessageAsync({message: `I allow mails to be forwarded to ${toAddress}`});
     const json = {
-      fromAddress: accountData.address,
-      toAddress,
-      message: signedMessage,
+      forwardfrom: accountData.address,
+      forwardto: toAddress,
+      signature: signedMessage,
     };
 
     console.log('To API: ', json)
-  };
 
+    fetch('https://api.0xsmtp.tech/create', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(json),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
   return (
     <Flex w="100%" h="100vh" justify="center" align="center">
       <Flex direction="column" w="60%">
