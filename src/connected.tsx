@@ -25,7 +25,7 @@ function ConnectedPage() {
 
     console.log('To API: ', json)
 
-    fetch('https://api.0xsmtp.tech/create', {
+    fetch('https://api.0xmail.org/create', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
